@@ -17,12 +17,12 @@ st.write("The name of your Smoothie will be", name_on_order)
 cnx = st.connection("snowflake", type ="snowflake")
 session = cnx.session()
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('SEARCH_ON'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 
 # Convert the Snowpark to Pandas
 pd_df = my_dataframe.to_pandas()
-st.dataframe(pd_df)
-st.stop()
+#st.dataframe(pd_df)
+#st.stop()
 
 ingredientes_list = st.multiselect(
     'Choose up to 5 ingredientes:'
